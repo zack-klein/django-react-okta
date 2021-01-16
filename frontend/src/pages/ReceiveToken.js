@@ -1,28 +1,27 @@
-import { useLocation } from "react-router-dom"
-import { useEffect } from "react"
-import { connect } from "react-redux"
-import { Redirect } from "react-router-dom"
-import { setToken } from "../actions/userActions"
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { setToken } from "../actions/userActions";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
 export function ReceiveToken({ setUserToken }) {
-	const query = useQuery();
+  const query = useQuery();
 
-	useEffect(() => {
-		setUserToken(query.get("token"));
-	})
+  useEffect(() => {
+    setUserToken(query.get("token"));
+  });
 
-	return (<Redirect to="/" />)
-
+  return <Redirect to="/" />;
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setUserToken: (token) => dispatch(setToken(token))
-  }
-}
+    setUserToken: (token) => dispatch(setToken(token)),
+  };
+};
 
 export default connect(null, mapDispatchToProps)(ReceiveToken);
