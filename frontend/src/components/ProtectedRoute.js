@@ -1,7 +1,14 @@
+import { useEffect } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-export function ProtectedRoute({ token, component, path }) {
+import { checkToken } from "../actions/userActions";
+
+export function ProtectedRoute({ token, checkTokenValidity, component, path }) {
+  useEffect(() => {
+    checkTokenValidity(token);
+  }, []);
+
   if (!token) {
     return <Redirect to="/login" />;
   } else {
@@ -15,4 +22,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(ProtectedRoute);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    checkTokenValidity: (token) => dispatch(checkToken(token)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProtectedRoute);

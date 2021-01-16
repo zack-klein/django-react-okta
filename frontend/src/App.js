@@ -3,7 +3,6 @@ import "./App.css";
 import "semantic-ui-css/semantic.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useEffect } from "react";
-import { connect } from "react-redux";
 
 import Home from "./pages/Home";
 import ReceiveToken from "./pages/ReceiveToken";
@@ -13,13 +12,7 @@ import Login from "./pages/Login";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
-import { checkToken } from "./actions/userActions";
-
-function App({ token, checkTokenExists }) {
-  useEffect(() => {
-    checkTokenExists();
-  }, []);
-
+function App() {
   return (
     <Router>
       <div className="App">
@@ -35,16 +28,4 @@ function App({ token, checkTokenExists }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    token: state.userReducer.token,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    checkTokenExists: () => dispatch(checkToken()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
