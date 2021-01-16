@@ -14,17 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.conf.urls import url
 from django.urls import path, include
 
 import django_saml2_auth.views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
+    path("admin/", admin.site.urls),
+    path("api/", include("api.urls")),
     # The order of paths/urls matters here; put these first.
-    path('api/sso/', include('django_saml2_auth.urls')),
+    path("api/sso/", include("django_saml2_auth.urls")),
     # Overrides django's default and admin login
-    path('api/accounts/login/', django_saml2_auth.views.signin),
-    path('api/admin/login/', django_saml2_auth.views.signin),
+    path("api/accounts/login/", django_saml2_auth.views.signin),
+    path("api/admin/login/", django_saml2_auth.views.signin),
 ]
