@@ -6,18 +6,18 @@ This repo demonstrates a full-stack web development setup:
 
 Frontend: 
 
-	- React
-	- Axios
-	- Redux
-	- Semantic UI
+- React
+- Axios
+- Redux
+- Semantic UI
 
 Backend:
 
-	- Django REST Framework
+- Django REST Framework
 
 Authentication:
 
-	- Okta (SAML2)
+- Okta (SAML2)
 
 You can spin up the entire thing with docker compose:
 
