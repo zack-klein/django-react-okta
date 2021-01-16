@@ -1,0 +1,4 @@
+django
+djangorestframework
+django-saml2-auth
+drf-jwt
