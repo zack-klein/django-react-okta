@@ -24,9 +24,10 @@ RUN apk add --update --no-cache --virtual .tmp-build-deps \
   libffi-dev \
   openssl-dev \
   python3-dev \
-  xmlsec \
   && pip install -r requirements.txt \
   && apk del --no-cache .tmp-build-deps
+
+RUN apk add xmlsec
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
