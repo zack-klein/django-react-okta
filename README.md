@@ -19,6 +19,9 @@ Authentication:
 
 - Okta (SAML2)
 
+Other cool stuff:
+- Auto-linting and security checks (for the backend) with pre-commit
+
 You can spin up the entire thing with docker compose:
 
 ```
