@@ -11,9 +11,7 @@ then
     echo "PostgreSQL started"
 fi
 
-# We have base custom user model so need to makemigrations out of box
-python manage.py makemigrations core
-
+python manage.py makemigrations
 python manage.py migrate
 python manage.py collectstatic --noinput
 
